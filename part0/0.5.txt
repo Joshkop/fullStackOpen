@@ -1,0 +1,25 @@
+browser -> server: HTTP GET https://fullstack-exampleapp.herokuapp.com/spa
+server --> browser: HTML-Code
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.css
+server-->browser: main.css
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.js
+server-->browser: spa.js
+
+note over browser:
+browser starts executing js-code
+that requests JSON data from server 
+end note
+
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/data.json
+server-->browser: [{ content: "HTML is easy", date: "2019-05-23" }, ...]
+
+note over browser:
+JSON data is added to the document via JS
+
+after the form is sumbitted, the new note is appended to the list with JS
+end note
+browser->server: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
+server-->browser: HTTP STATUS CODE 201 Created
+note over server:
+server adds new note to the database+
+endnote
